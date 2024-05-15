@@ -4,17 +4,43 @@
  */
 package Main.Game;
 
+import Main.*;
+
 /**
  *
  * @author TheOneAboveAll
  */
 public class JFGameS extends javax.swing.JFrame {
-
+    private String player1;
+    private String player2;
+    private int player1Points = 0;
+    private int player2Points = 0;
+    
+    //Getters y setters
+    public void setPlayer1_(String n){   this.player1 = n;  }
+    public void setPlayer2(String n){   this.player2 = n;  }
+    public void setPlayer1Points(int x){   this.player1Points = x;  }
+    public void setPlayer2Points(int x){   this.player2Points = x;  }
+    
+    public String getPlayer1(){   return this.player1;  }
+    public String getPlayer2(){   return this.player2;  }
+    public int getPlayer1Points(){   return this.player1Points;  }
+    public int getPlayer2Points(){   return this.player2Points;  }
     /**
      * Creates new form JFGameS
      */
-    public JFGameS() {
+    public JFGameS(String p1, String p2) {
         initComponents();
+        this.player1 = p1;
+        this.player2 = p2;
+        
+        jTFShowNameP1.setText(p1);
+        jTFShowNameP2.setText(p2);
+        
+        jTFShowPointsP1.setText(this.getPlayer1Points() + "");
+        jTFShowPointsP2.setText(this.getPlayer2Points() + "");
+        
+       
     }
 
     /**
@@ -26,17 +52,147 @@ public class JFGameS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jBShowManual = new javax.swing.JButton();
+        jTFShowNameP1 = new javax.swing.JLabel();
+        jTFShowNameP2 = new javax.swing.JLabel();
+        jTFShowPointsP2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTFShowPointsP1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 153));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User1.jpg"))); // NOI18N
+        jLabel8.setOpaque(true);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User2.jpg"))); // NOI18N
+        jLabel7.setOpaque(true);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("JUGADOR 1");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("JUGADOR 2");
+
+        jBShowManual.setText("Mostrar el manual");
+
+        jTFShowNameP1.setBackground(new java.awt.Color(255, 51, 51));
+        jTFShowNameP1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTFShowNameP1.setForeground(new java.awt.Color(0, 0, 0));
+        jTFShowNameP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTFShowNameP1.setOpaque(true);
+
+        jTFShowNameP2.setBackground(new java.awt.Color(255, 51, 51));
+        jTFShowNameP2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTFShowNameP2.setForeground(new java.awt.Color(0, 0, 0));
+        jTFShowNameP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTFShowNameP2.setOpaque(true);
+
+        jTFShowPointsP2.setBackground(new java.awt.Color(255, 255, 255));
+        jTFShowPointsP2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTFShowPointsP2.setForeground(new java.awt.Color(0, 0, 0));
+        jTFShowPointsP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTFShowPointsP2.setOpaque(true);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Puntos:");
+
+        jTFShowPointsP1.setBackground(new java.awt.Color(255, 255, 255));
+        jTFShowPointsP1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTFShowPointsP1.setForeground(new java.awt.Color(0, 0, 0));
+        jTFShowPointsP1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTFShowPointsP1.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jBShowManual))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(246, 246, 246)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addComponent(jTFShowPointsP1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85)
+                                .addComponent(jTFShowPointsP2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(100, 100, 100))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jTFShowNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTFShowNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3))))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFShowNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFShowNameP1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTFShowPointsP2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jBShowManual)
+                            .addGap(103, 103, 103)
+                            .addComponent(jLabel4)
+                            .addGap(21, 21, 21)
+                            .addComponent(jTFShowPointsP1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(460, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,13 +226,20 @@ public class JFGameS extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFGameS().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBShowManual;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jTFShowNameP1;
+    private javax.swing.JLabel jTFShowNameP2;
+    private javax.swing.JLabel jTFShowPointsP1;
+    private javax.swing.JLabel jTFShowPointsP2;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,12 +4,23 @@
  */
 package Main;
 
+import Main.Game.*;
+
 /**
  *
  * @author TheOneAboveAll
  */
 public class JFMain extends javax.swing.JFrame {
 
+    private String player1 = "Player 1";
+    private String player2 = "Player 2";
+    
+    //Métodos getters y setters
+    public void setPlayer1(String n){   this.player1 = n;  }
+    public void setPlayer2(String n){   this.player2 = n;  }
+    
+    public String getPlayer1(){   return this.player1;  }
+    public String getPlayer2(){   return this.player2;  }
     /**
      * Creates new form JFMain
      */
@@ -37,9 +48,10 @@ public class JFMain extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jBPlayGame = new javax.swing.JButton();
         jBShowManual = new javax.swing.JButton();
-        jTUser1_name = new javax.swing.JTextField();
-        jTUser1_name1 = new javax.swing.JTextField();
+        jTPlayer1_name = new javax.swing.JTextField();
+        jTPlayer2_name = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jBExitGame = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +86,11 @@ public class JFMain extends javax.swing.JFrame {
         jLabel9.setText("Ingresa le nombre de los 2 jugadores en los recuadros de abajo");
 
         jBPlayGame.setText("Iniciar el juego");
+        jBPlayGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPlayGameActionPerformed(evt);
+            }
+        });
 
         jBShowManual.setText("Mostrar el manual");
         jBShowManual.addActionListener(new java.awt.event.ActionListener() {
@@ -82,22 +99,29 @@ public class JFMain extends javax.swing.JFrame {
             }
         });
 
-        jTUser1_name.setBackground(new java.awt.Color(255, 255, 255));
-        jTUser1_name.setForeground(new java.awt.Color(0, 0, 0));
-        jTUser1_name.setText("Escribe el nombre del jugador 1");
+        jTPlayer1_name.setBackground(new java.awt.Color(255, 255, 255));
+        jTPlayer1_name.setForeground(new java.awt.Color(0, 0, 0));
+        jTPlayer1_name.setText("Escribe el nombre del jugador 1");
 
-        jTUser1_name1.setBackground(new java.awt.Color(255, 255, 255));
-        jTUser1_name1.setForeground(new java.awt.Color(0, 0, 0));
-        jTUser1_name1.setText("Escribe el nombre del jugador 2");
-        jTUser1_name1.addActionListener(new java.awt.event.ActionListener() {
+        jTPlayer2_name.setBackground(new java.awt.Color(255, 255, 255));
+        jTPlayer2_name.setForeground(new java.awt.Color(0, 0, 0));
+        jTPlayer2_name.setText("Escribe el nombre del jugador 2");
+        jTPlayer2_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTUser1_name1ActionPerformed(evt);
+                jTPlayer2_nameActionPerformed(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("V.S");
+
+        jBExitGame.setText("SALIR DEL JUEGO");
+        jBExitGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExitGameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,16 +157,17 @@ public class JFMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(393, 393, 393)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBShowManual)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jBPlayGame))))
+                        .addComponent(jBShowManual))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(177, 177, 177)
-                        .addComponent(jTUser1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTPlayer1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114)
-                        .addComponent(jTUser1_name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTPlayer2_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jBPlayGame)
+                        .addGap(170, 170, 170)
+                        .addComponent(jBExitGame)))
                 .addGap(47, 200, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -159,7 +184,7 @@ public class JFMain extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jBShowManual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -176,18 +201,20 @@ public class JFMain extends javax.swing.JFrame {
                         .addComponent(jLabel8)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTUser1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTUser1_name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(66, 66, 66)
-                .addComponent(jBPlayGame)
-                .addGap(11, 11, 11)
+                    .addComponent(jTPlayer1_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTPlayer2_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBPlayGame)
+                    .addComponent(jBExitGame))
+                .addGap(34, 34, 34)
                 .addComponent(jLabel6)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(111, 111, 111)
                     .addComponent(jLabel9)
-                    .addContainerGap(619, Short.MAX_VALUE)))
+                    .addContainerGap(595, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,15 +225,15 @@ public class JFMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTUser1_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUser1_name1ActionPerformed
+    private void jTPlayer2_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTPlayer2_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTUser1_name1ActionPerformed
+    }//GEN-LAST:event_jTPlayer2_nameActionPerformed
 
     private void jBShowManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBShowManualActionPerformed
        JFManual manual = new JFManual(); //Instanciamos un bojeto del a case de manual para poder acceder a el
@@ -217,9 +244,28 @@ public class JFMain extends javax.swing.JFrame {
        manual.setLocationRelativeTo(null);
        //usamos le método setLocationRelativeTo()  para definir la localizacion de la ventana en la pantalla
        // y le colocamos NULL  para que aparesca en el centro
-        
-        
     }//GEN-LAST:event_jBShowManualActionPerformed
+
+    private void jBExitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExitGameActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+        
+    }//GEN-LAST:event_jBExitGameActionPerformed
+
+    private void jBPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayGameActionPerformed
+        // TODO add your handling code here:
+        setPlayer1(jTPlayer1_name.getText());
+        setPlayer2(jTPlayer2_name.getText());
+        
+        
+        
+        System.out.println(getPlayer1());
+        
+        JFGameS game = new JFGameS(getPlayer1(), getPlayer2());
+        game.setVisible(true); 
+        game.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_jBPlayGameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +303,7 @@ public class JFMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBExitGame;
     private javax.swing.JButton jBPlayGame;
     private javax.swing.JButton jBShowManual;
     private javax.swing.JLabel jLabel10;
@@ -269,7 +316,7 @@ public class JFMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTUser1_name;
-    private javax.swing.JTextField jTUser1_name1;
+    private javax.swing.JTextField jTPlayer1_name;
+    private javax.swing.JTextField jTPlayer2_name;
     // End of variables declaration//GEN-END:variables
 }

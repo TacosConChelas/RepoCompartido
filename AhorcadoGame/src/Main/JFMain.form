@@ -246,8 +246,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jBShowManual">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mostrar e manual"/>
+            <Property name="text" type="java.lang.String" value="Mostrar el manual"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBShowManualActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTUser1_name">
           <Properties>

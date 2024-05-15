@@ -75,7 +75,12 @@ public class JFMain extends javax.swing.JFrame {
 
         jBPlayGame.setText("Iniciar el juego");
 
-        jBShowManual.setText("Mostrar e manual");
+        jBShowManual.setText("Mostrar el manual");
+        jBShowManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBShowManualActionPerformed(evt);
+            }
+        });
 
         jTUser1_name.setBackground(new java.awt.Color(255, 255, 255));
         jTUser1_name.setForeground(new java.awt.Color(0, 0, 0));
@@ -202,6 +207,19 @@ public class JFMain extends javax.swing.JFrame {
     private void jTUser1_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUser1_name1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTUser1_name1ActionPerformed
+
+    private void jBShowManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBShowManualActionPerformed
+       JFManual manual = new JFManual(); //Instanciamos un bojeto del a case de manual para poder acceder a el
+       
+       manual.setVisible(true); 
+       //usamos el método setVisible() y le colocamos el parámetro TRUE  para que este sea visible 
+       
+       manual.setLocationRelativeTo(null);
+       //usamos le método setLocationRelativeTo()  para definir la localizacion de la ventana en la pantalla
+       // y le colocamos NULL  para que aparesca en el centro
+        
+        
+    }//GEN-LAST:event_jBShowManualActionPerformed
 
     /**
      * @param args the command line arguments

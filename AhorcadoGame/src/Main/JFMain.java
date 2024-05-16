@@ -257,9 +257,7 @@ public class JFMain extends javax.swing.JFrame {
         setPlayer1(jTPlayer1_name.getText());
         setPlayer2(jTPlayer2_name.getText());
         
-        
-        
-        System.out.println(getPlayer1());
+        //System.out.println(getPlayer1());
         
         JFGameS game = new JFGameS(getPlayer1(), getPlayer2());
         game.setVisible(true); 

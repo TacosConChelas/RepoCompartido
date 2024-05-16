@@ -26,6 +26,7 @@ public class JFMain extends javax.swing.JFrame {
      */
     public JFMain() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

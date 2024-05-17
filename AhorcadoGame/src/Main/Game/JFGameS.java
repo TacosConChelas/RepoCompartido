@@ -19,9 +19,10 @@ public class JFGameS extends javax.swing.JFrame {
     private int player2Points = 0;
     private int intentosP1;
     private int intentosP2;
-    public int turno = 0;
-    public boolean permiso = true;
-    public int count = 2;
+    public int turno = 0; //Si es 0 le toca adivinar al jugador 2 e insertar al jugador 1
+    
+    public boolean permiso = true; //Permite si se insertan una nueva pista y una nueva palabra secreta
+    public int count = 2; //Cuenta los errores para navegar en el arreglo de cada jugador
     /*
     El primer espacio del arreglo se encuentra la pala que el jugador eligio como la pista, 
     los siguientes 6 espacios se encuentran las 6 palabras que el jugador va escribiendo en cada uno de sus 
@@ -475,7 +476,7 @@ public class JFGameS extends javax.swing.JFrame {
             System.out.println(this.wordsPlayer2[this.count]);
             System.out.println(this.wordsPlayer1[0]);
                     
-            if(this.wordsPlayer2[this.count] == this.wordsPlayer1[0]){
+            if(this.wordsPlayer2[this.count] != this.wordsPlayer1[0]){
                 //Si el jugador 2 acierta la palabra del jugadpr 1 se le agrega un punto a su puntaje
                 this.setPlayer2Points(1);
                 jTFShowPointsP2.setText(this.getPlayer2Points() + ""); //Se coloca el puntaje del jugador 2
@@ -483,9 +484,11 @@ public class JFGameS extends javax.swing.JFrame {
                 jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
                 
                 //Se manda un mensaje del cmabio de turno
-                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de" + this.getPlayer1()); 
+                jTFShowPlayerTurn.setText(this.getPlayer1());
+                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer1()); 
                 
-                this.turno = 1; //Se cambia turno
+                this.turno = 1;//Se cambia turno
+                this.permiso = true;
                 
             } else {
                 //Si el jugador 2 no acierta la palabra del jugadpr 1 se agrega un contador
@@ -498,8 +501,10 @@ public class JFGameS extends javax.swing.JFrame {
                 if(this.count == 8 && this.intentosP2 == 0){
                     this.turno = 1;//SE le pasa el turno al otro jugadr
                     this.count = 2; //Se reinician los contadores
+                    this.permiso = true; //Se concede permiso para incresar nueva palabra secreta y nueva pista
                     jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
                     
+                    jTFShowPlayerTurn.setText(this.getPlayer1());
                     JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de " + this.getPlayer1());
                     //Se muestra mensaje que se pasa turno
                 }
@@ -515,9 +520,11 @@ public class JFGameS extends javax.swing.JFrame {
                 jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
                 
                 //Se manda un mensaje del cmabio de turno
+                jTFShowPlayerTurn.setText(this.getPlayer2());
                 JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer2()); 
                 
                 this.turno = 0; //Se cambia turno
+                this.permiso = true;
                 
             } else {
                 //Si el jugador 1 no acierta la palabra del jugadpr 2 se agrega un contador
@@ -530,9 +537,11 @@ public class JFGameS extends javax.swing.JFrame {
                 if(this.count == 8 && this.intentosP1 == 0){
                     this.turno = 0;//SE le pasa el turno al otro jugadr
                     this.count = 2; //Se reinician los contadores
+                    this.permiso = true;
                     jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
                     
-                    JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de" + this.getPlayer1());
+                    jTFShowPlayerTurn.setText(this.getPlayer2());
+                    JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de " + this.getPlayer2());
                     //Se muestra mensaje que se pasa turno
                 }
             }
@@ -549,9 +558,6 @@ public class JFGameS extends javax.swing.JFrame {
             }
             
         }
-        
-        
-        
     }//GEN-LAST:event_jTFShowWordsP1MouseClicked
 
     private void jTAShowWordsP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTAShowWordsP2MouseClicked
@@ -559,11 +565,7 @@ public class JFGameS extends javax.swing.JFrame {
             if(this.wordsPlayer2[i] != null){
                 jTAShowWordsP2.setText(jTAShowWordsP2.getText() + this.wordsPlayer2[i] + "\n");
             }
-            
         }
-        
-        
-        
     }//GEN-LAST:event_jTAShowWordsP2MouseClicked
 
     /**

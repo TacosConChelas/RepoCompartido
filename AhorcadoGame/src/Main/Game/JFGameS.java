@@ -21,7 +21,7 @@ public class JFGameS extends javax.swing.JFrame {
     private int intentosP2;
     public int turno = 0;
     public boolean permiso = true;
-    public int count = 3;
+    public int count = 2;
     /*
     El primer espacio del arreglo se encuentra la pala que el jugador eligio como la pista, 
     los siguientes 6 espacios se encuentran las 6 palabras que el jugador va escribiendo en cada uno de sus 
@@ -92,7 +92,6 @@ public class JFGameS extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTFShowPlayerTurn = new javax.swing.JLabel();
         jTFShowWordsP1 = new javax.swing.JLabel();
-        jTFShowWordsP2 = new javax.swing.JLabel();
         jTFShowPista = new javax.swing.JLabel();
         jPFPista = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
@@ -104,6 +103,8 @@ public class JFGameS extends javax.swing.JFrame {
         jTFShowResultado = new javax.swing.JLabel();
         jTFIntentosRestantes = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTAShowWordsP2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -183,17 +184,6 @@ public class JFGameS extends javax.swing.JFrame {
             }
         });
 
-        jTFShowWordsP2.setBackground(new java.awt.Color(255, 255, 255));
-        jTFShowWordsP2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jTFShowWordsP2.setForeground(new java.awt.Color(0, 0, 0));
-        jTFShowWordsP2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jTFShowWordsP2.setOpaque(true);
-        jTFShowWordsP2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTFShowWordsP2MouseClicked(evt);
-            }
-        });
-
         jTFShowPista.setBackground(new java.awt.Color(255, 255, 255));
         jTFShowPista.setForeground(new java.awt.Color(0, 0, 0));
         jTFShowPista.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -234,25 +224,26 @@ public class JFGameS extends javax.swing.JFrame {
         jTFShowResultado.setForeground(new java.awt.Color(0, 0, 0));
         jTFShowResultado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jTFShowResultado.setOpaque(true);
-        jTFShowResultado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTFShowResultadoMouseClicked(evt);
-            }
-        });
 
         jTFIntentosRestantes.setBackground(new java.awt.Color(255, 255, 255));
         jTFIntentosRestantes.setForeground(new java.awt.Color(0, 0, 0));
         jTFIntentosRestantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jTFIntentosRestantes.setOpaque(true);
-        jTFIntentosRestantes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTFIntentosRestantesMouseClicked(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Intentos disponibles:");
+
+        jTAShowWordsP2.setBackground(new java.awt.Color(255, 255, 255));
+        jTAShowWordsP2.setColumns(20);
+        jTAShowWordsP2.setForeground(new java.awt.Color(0, 0, 0));
+        jTAShowWordsP2.setRows(5);
+        jTAShowWordsP2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTAShowWordsP2MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTAShowWordsP2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -273,42 +264,39 @@ public class JFGameS extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFShowWordsP1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jPFPista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(122, 122, 122)
-                        .addComponent(jTFShowNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel11)
-                                        .addGap(161, 161, 161))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTFIntentosRestantes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTFShowPista, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(102, 102, 102))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addGap(198, 198, 198)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jBAdivinar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTFAdivinarW)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addGap(177, 177, 177)
-                                        .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jTFShowWordsP2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10)
+                                    .addComponent(jPFPista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(122, 122, 122))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(123, 123, 123)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jBAdivinar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTFAdivinarW))
+                                .addGap(211, 211, 211))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addGap(161, 161, 161))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTFIntentosRestantes, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTFShowPista, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(102, 102, 102)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFShowNameP2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -385,10 +373,17 @@ public class JFGameS extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPFPista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFShowWordsP1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFShowWordsP2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFShowWordsP1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12))
@@ -399,10 +394,8 @@ public class JFGameS extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jBAdivinar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFAdivinarW, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addComponent(jTFAdivinarW, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(375, 375, 375)
@@ -479,7 +472,9 @@ public class JFGameS extends javax.swing.JFrame {
     private void jBAdivinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdivinarActionPerformed
         if(this.turno == 0){
             this.wordsPlayer2[this.count] = jTFAdivinarW.getText(); //Se agrega el intento del jugador 2 a su array 
-            
+            System.out.println(this.wordsPlayer2[this.count]);
+            System.out.println(this.wordsPlayer1[0]);
+                    
             if(this.wordsPlayer2[this.count] == this.wordsPlayer1[0]){
                 //Si el jugador 2 acierta la palabra del jugadpr 1 se le agrega un punto a su puntaje
                 this.setPlayer2Points(1);
@@ -505,7 +500,7 @@ public class JFGameS extends javax.swing.JFrame {
                     this.count = 2; //Se reinician los contadores
                     jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
                     
-                    JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de" + this.getPlayer1());
+                    JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de " + this.getPlayer1());
                     //Se muestra mensaje que se pasa turno
                 }
             }
@@ -520,7 +515,7 @@ public class JFGameS extends javax.swing.JFrame {
                 jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
                 
                 //Se manda un mensaje del cmabio de turno
-                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de" + this.getPlayer2()); 
+                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer2()); 
                 
                 this.turno = 0; //Se cambia turno
                 
@@ -548,32 +543,28 @@ public class JFGameS extends javax.swing.JFrame {
 
     private void jTFShowWordsP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFShowWordsP1MouseClicked
         // TODO add your handling code here:
-        for (int i = 0; i < this.wordsPlayer1.length; i++){
-            jTFShowWordsP1.setText(this.wordsPlayer1[i] + "\n");
+        for (int i = 2; i < this.wordsPlayer1.length; i++){
+            if(this.wordsPlayer1[i] != null){
+                jTFShowWordsP1.setText(jTFShowWordsP1.getText() + this.wordsPlayer1[i] + "\n");
+            }
+            
         }
         
         
         
     }//GEN-LAST:event_jTFShowWordsP1MouseClicked
 
-    private void jTFShowWordsP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFShowWordsP2MouseClicked
-        // TODO add your handling code here:
+    private void jTAShowWordsP2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTAShowWordsP2MouseClicked
         for (int i = 2; i < this.wordsPlayer2.length; i++){
-            jTFShowWordsP2.setText(this.wordsPlayer2[i] + "\n");
+            if(this.wordsPlayer2[i] != null){
+                jTAShowWordsP2.setText(jTAShowWordsP2.getText() + this.wordsPlayer2[i] + "\n");
+            }
+            
         }
         
         
         
-        
-    }//GEN-LAST:event_jTFShowWordsP2MouseClicked
-
-    private void jTFShowResultadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFShowResultadoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFShowResultadoMouseClicked
-
-    private void jTFIntentosRestantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFIntentosRestantesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFIntentosRestantesMouseClicked
+    }//GEN-LAST:event_jTAShowWordsP2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -623,6 +614,8 @@ public class JFGameS extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFPista;
     private javax.swing.JPasswordField jPFSecretWord;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTAShowWordsP2;
     private javax.swing.JTextField jTFAdivinarW;
     private javax.swing.JLabel jTFIntentosRestantes;
     private javax.swing.JLabel jTFShowNameP1;
@@ -633,6 +626,5 @@ public class JFGameS extends javax.swing.JFrame {
     private javax.swing.JLabel jTFShowPointsP2;
     private javax.swing.JLabel jTFShowResultado;
     private javax.swing.JLabel jTFShowWordsP1;
-    private javax.swing.JLabel jTFShowWordsP2;
     // End of variables declaration//GEN-END:variables
 }

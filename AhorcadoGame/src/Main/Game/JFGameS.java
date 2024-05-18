@@ -37,11 +37,13 @@ public class JFGameS extends javax.swing.JFrame {
     //GETTERS Y SETTERSSS
     public void setPlayer1(String n){   this.player1 = n;  }
     public void setPlayer2(String n){   this.player2 = n;  }
+    
     public void setPlayer1Points(int x){   this.player1Points += x;  }
     public void setPlayer2Points(int x){   this.player2Points += x;  }
     
     public String getPlayer1(){   return this.player1;  }
     public String getPlayer2(){   return this.player2;  }
+    
     public int getPlayer1Points(){   return this.player1Points;  }
     public int getPlayer2Points(){   return this.player2Points;  }
     /**
@@ -59,9 +61,9 @@ public class JFGameS extends javax.swing.JFrame {
         jTFShowNameP2.setText(p2);
         
         //Se colocan los puntajes de cada uno de los jugadores
-        int n = this.getPlayer1Points();
-        System.out.println(n);
-        jTFShowPointsP1.setText(n + "");
+        //int n = this.getPlayer1Points();
+        //System.out.println(n);
+        jTFShowPointsP1.setText(this.getPlayer1Points() + "");
         jTFShowPointsP2.setText(this.getPlayer2Points() + "");
         
         //Se coloca el nombre del jugador en turno
@@ -473,10 +475,29 @@ public class JFGameS extends javax.swing.JFrame {
     private void jBAdivinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdivinarActionPerformed
         if(this.turno == 0){
             this.wordsPlayer2[this.count] = jTFAdivinarW.getText(); //Se agrega el intento del jugador 2 a su array 
-            System.out.println(this.wordsPlayer2[this.count]);
-            System.out.println(this.wordsPlayer1[0]);
+            System.out.println(wordsPlayer2[this.count]);
+            System.out.println(wordsPlayer1[0]);
+            System.out.println(this.count);
+            //String a = jTFAdivinarW.getText(); System.out.println("\n_" + a+ "_");
+            //String b = this.wordsPlayer1[0]; System.out.println("_" + b+ "_");
+            //int a = 1;
+            //int b = 1;
+            
+           if(this.wordsPlayer2[this.count].equals(this.wordsPlayer1[0])) {
+                System.out.println("ajajjaj nmms otra ves????");
                     
-            if(this.wordsPlayer2[this.count] != this.wordsPlayer1[0]){
+                
+            } else {
+                System.out.println("Vaya vaya jajajajj que chistoso");
+            }
+            /*
+            Se usa el método .equals() ya que para las variables de tipo String estas al ser objetos y usar == para compararlas 
+            va a dar falso ya que este == no está comparando su valor en si, sino su ubicacion en memoria ya que son objetos, por lo que 
+            si queremos comparar su valor y no su ubicacion en memoria debemos de usar este método, esto para objetos.
+            */
+            if(this.wordsPlayer2[this.count].equals(this.wordsPlayer1[0])){
+                
+                System.out.println("Entro en el primer if del jugador 2");
                 //Si el jugador 2 acierta la palabra del jugadpr 1 se le agrega un punto a su puntaje
                 this.setPlayer2Points(1);
                 jTFShowPointsP2.setText(this.getPlayer2Points() + ""); //Se coloca el puntaje del jugador 2
@@ -491,6 +512,8 @@ public class JFGameS extends javax.swing.JFrame {
                 this.permiso = true;
                 
             } else {
+                System.out.println("Entro en el primer else del jugador 2");
+                
                 //Si el jugador 2 no acierta la palabra del jugadpr 1 se agrega un contador
                 this.count++;
                 this.intentosP2--; //Se le quita un intento
@@ -511,8 +534,13 @@ public class JFGameS extends javax.swing.JFrame {
             }
         //Turno cuando el jugador 1 adivina la palabra secreta del jug 2:
         } else {
+            System.out.println("Es turno de " + this.getPlayer1());
+            
             this.wordsPlayer1[this.count] = jTFAdivinarW.getText();
-             if(this.wordsPlayer1[this.count] == this.wordsPlayer2[0]){
+            if(this.wordsPlayer1[this.count].equals(this.wordsPlayer2[0])){
+                 
+                 
+                 System.out.println("Entro en el primer if del jugador 1");
                 //Si el jugador 1 acierta la palabra del jugadpr 2 se le agrega un punto a su puntaje
                 this.setPlayer1Points(1);
                 jTFShowPointsP1.setText(this.getPlayer1Points() + ""); //Se coloca el puntaje del jugador 1
@@ -527,6 +555,7 @@ public class JFGameS extends javax.swing.JFrame {
                 this.permiso = true;
                 
             } else {
+                 System.out.println("Entro en el primer else del jugador 1");
                 //Si el jugador 1 no acierta la palabra del jugadpr 2 se agrega un contador
                 this.count++;
                 this.intentosP1--; //Se le quita un intento

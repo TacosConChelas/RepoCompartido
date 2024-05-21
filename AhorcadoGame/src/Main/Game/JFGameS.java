@@ -17,8 +17,8 @@ public class JFGameS extends javax.swing.JFrame {
     
     private int player1Points = 0;
     private int player2Points = 0;
-    private int intentosP1;
-    private int intentosP2;
+    public int intentosP1 = 6;
+    public int intentosP2 = 6;
     public int turno = 0; //Si es 0 le toca adivinar al jugador 2 e insertar al jugador 1
     
     public boolean permiso = true; //Permite si se insertan una nueva pista y una nueva palabra secreta
@@ -40,6 +40,7 @@ public class JFGameS extends javax.swing.JFrame {
     
     public void setPlayer1Points(int x){   this.player1Points += x;  }
     public void setPlayer2Points(int x){   this.player2Points += x;  }
+    
     
     public String getPlayer1(){   return this.player1;  }
     public String getPlayer2(){   return this.player2;  }
@@ -515,6 +516,7 @@ public class JFGameS extends javax.swing.JFrame {
             va a dar falso ya que este == no está comparando su valor en si, sino su ubicacion en memoria ya que son objetos, por lo que 
             si queremos comparar su valor y no su ubicacion en memoria debemos de usar este método, esto para objetos.
             */
+            System.out.println("Es turno de " + this.getPlayer1() + " Con intentos: " + this.intentosP1);
             if(this.wordsPlayer2[this.count].equals(this.wordsPlayer1[0])){
                 
                 System.out.println("Entro en el primer if del jugador 2");
@@ -530,6 +532,8 @@ public class JFGameS extends javax.swing.JFrame {
                 
                 this.turno = 1;//Se cambia turno
                 this.permiso = true;
+                this.intentosP2 = 6;
+                this.count = 2;
                 
             } else {
                 System.out.println("Entro en el primer else del jugador 2");
@@ -544,6 +548,7 @@ public class JFGameS extends javax.swing.JFrame {
                 if(this.count == 8 && this.intentosP2 == 0){
                     this.turno = 1;//SE le pasa el turno al otro jugadr
                     this.count = 2; //Se reinician los contadores
+                    this.intentosP2 = 6; //Re reinician los intentos de jugador 2 para el siguiente turno
                     this.permiso = true; //Se concede permiso para incresar nueva palabra secreta y nueva pista
                     jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
                     
@@ -554,7 +559,7 @@ public class JFGameS extends javax.swing.JFrame {
             }
         //Turno cuando el jugador 1 adivina la palabra secreta del jug 2:
         } else {
-            System.out.println("Es turno de " + this.getPlayer1());
+            System.out.println("Es turno de " + this.getPlayer1() + "Con intentos: " + this.intentosP1);
             
             this.wordsPlayer1[this.count] = jTFAdivinarW.getText();
             
@@ -574,6 +579,8 @@ public class JFGameS extends javax.swing.JFrame {
                 
                 this.turno = 0; //Se cambia turno
                 this.permiso = true;
+                this.count = 2;
+                this.intentosP1 = 6;
                 
             } else {
                  System.out.println("Entro en el primer else del jugador 1");
@@ -588,6 +595,8 @@ public class JFGameS extends javax.swing.JFrame {
                     this.turno = 0;//SE le pasa el turno al otro jugadr
                     this.count = 2; //Se reinician los contadores
                     this.permiso = true;
+                    this.intentosP1 = 6;
+                    
                     jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
                     
                     jTFShowPlayerTurn.setText(this.getPlayer2());

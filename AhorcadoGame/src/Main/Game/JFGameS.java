@@ -497,7 +497,8 @@ public class JFGameS extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFShowPistaMouseClicked
 
     private void jBAdivinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdivinarActionPerformed
-        if(this.turno == 0){
+        //System.out.println(this.permiso);
+        if(this.turno == 0 && (! this.permiso)){
             this.wordsPlayer2[this.count] = jTFAdivinarW.getText(); //Se agrega el intento del jugador 2 a su array 
             System.out.println(wordsPlayer2[this.count]);
             System.out.println(wordsPlayer1[0]);
@@ -558,7 +559,7 @@ public class JFGameS extends javax.swing.JFrame {
                 }
             }
         //Turno cuando el jugador 1 adivina la palabra secreta del jug 2:
-        } else {
+        } else if (this.turno == 1 && (! this.permiso)){
             System.out.println("Es turno de " + this.getPlayer1() + "Con intentos: " + this.intentosP1);
             
             this.wordsPlayer1[this.count] = jTFAdivinarW.getText();

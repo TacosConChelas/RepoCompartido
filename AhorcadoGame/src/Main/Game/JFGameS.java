@@ -71,6 +71,66 @@ public class JFGameS extends javax.swing.JFrame {
         jTFShowPlayerTurn.setText(this.getPlayer2());
         
     }
+    public void ganadorP (int p1, int p2){
+        if(p1 == 3){
+            this.permiso = false; //se niega el permiso de insertar 
+            this.turno = 2; //Se cambia a valor 2 indicando que ya no se encuentra en ningun turno
+          
+            jTFShowResultado.setText(this.getPlayer1() + " WIN");
+            JOptionPane.showMessageDialog(null, "INCREIBLE el jugador ganador es " + this.getPlayer1());
+            
+        } else if (p2 == 3){ 
+            
+            this.permiso = false;
+            this.turno = 2;
+            jTFShowResultado.setText(this.getPlayer2() + " WIN");
+            JOptionPane.showMessageDialog(null, "INCREIBLE el jugador ganador es " + this.getPlayer2());
+            
+        } else {
+            this.permiso = true; //Se concede permiso para poder insertar
+            this.count = 2; //Se reinician los contadores para navegar en el arreglo
+            
+            if(this.turno == 0){
+                this.turno = 1;//Se cambia turno
+                this.intentosP2 = 6; //Se reinician los intentos del jugador 2
+                jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
+                jTFShowPlayerTurn.setText(this.getPlayer1());
+                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer1()); 
+                
+            } else {
+                this.turno = 0; //Se cambia turno
+                this.intentosP1 = 6;
+                //Se manda un mensaje del cmabio de turno
+                jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
+                jTFShowPlayerTurn.setText(this.getPlayer2());
+                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer2());
+            }
+           
+        }
+        
+    }
+    
+    public void losePlayer(int a){
+        //Si algun jugador no adivina la palabra secreta del otro se añade uno a la variable count para navegar en el siguiente indice de us respectivo arreglo
+        this.count++; 
+        jTFShowResultado.setText("Incorrecto"); //SE muestra el mensaje de incorrecto
+        switch(a){
+            case 0:
+                //Si el jugador 2 no acierta la palabra del jugadpr 1 :
+                this.intentosP2--; //Se le quita un intento
+                jTFIntentosRestantes.setText(this.intentosP2 + ""); //Se muestran los intentos restantes 
+                
+                break;
+            case 1:
+                //Si el jugador 1 no acierta la palabra del jugadpr 2 :
+                this.intentosP1--; //Se le quita un intento
+                jTFIntentosRestantes.setText(this.intentosP1 + ""); //Se muestran los intentos restantes 
+               
+                break;
+        
+        }
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -335,8 +395,8 @@ public class JFGameS extends javax.swing.JFrame {
                                 .addComponent(jLabel7)))
                         .addGap(38, 38, 38))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147)
+                        .addComponent(jTFShowResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addGap(65, 65, 65))))
@@ -391,8 +451,7 @@ public class JFGameS extends javax.swing.JFrame {
                             .addGap(34, 34, 34))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGap(6, 6, 6)
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(jLabel9)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel10)
@@ -500,22 +559,22 @@ public class JFGameS extends javax.swing.JFrame {
         //System.out.println(this.permiso);
         if(this.turno == 0 && (! this.permiso)){
             this.wordsPlayer2[this.count] = jTFAdivinarW.getText(); //Se agrega el intento del jugador 2 a su array 
-            System.out.println(wordsPlayer2[this.count]);
-            System.out.println(wordsPlayer1[0]);
-            System.out.println(this.count);
+            //System.out.println(wordsPlayer2[this.count]);     System.out.println(wordsPlayer1[0]);
+            //System.out.println(this.count);
             //String a = jTFAdivinarW.getText(); System.out.println("\n_" + a+ "_");
             //String b = this.wordsPlayer1[0]; System.out.println("_" + b+ "_");
-            //int a = 1;
-            //int b = 1;
+            //int a = 1;    int b = 1;
             /*
            if(this.wordsPlayer2[this.count].equals(this.wordsPlayer1[0])) {
                 System.out.println("ajajjaj nmms otra ves????");
                 
             } else {    System.out.println("Vaya vaya jajajajj que chistoso");  }
             
+            
             Se usa el método .equals() ya que para las variables de tipo String estas al ser objetos y usar == para compararlas 
             va a dar falso ya que este == no está comparando su valor en si, sino su ubicacion en memoria ya que son objetos, por lo que 
             si queremos comparar su valor y no su ubicacion en memoria debemos de usar este método, esto para objetos.
+            
             */
             System.out.println("Es turno de " + this.getPlayer1() + " Con intentos: " + this.intentosP1);
             if(this.wordsPlayer2[this.count].equals(this.wordsPlayer1[0])){
@@ -525,25 +584,12 @@ public class JFGameS extends javax.swing.JFrame {
                 this.setPlayer2Points(1);
                 jTFShowPointsP2.setText(this.getPlayer2Points() + ""); //Se coloca el puntaje del jugador 2
                 
-                jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
-                
-                //Se manda un mensaje del cmabio de turno
-                jTFShowPlayerTurn.setText(this.getPlayer1());
-                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer1()); 
-                
-                this.turno = 1;//Se cambia turno
-                this.permiso = true;
-                this.intentosP2 = 6;
-                this.count = 2;
-                
+                this.ganadorP(this.getPlayer1Points(), this.getPlayer2Points());
+               
             } else {
                 System.out.println("Entro en el primer else del jugador 2");
                 
-                //Si el jugador 2 no acierta la palabra del jugadpr 1 se agrega un contador
-                this.count++;
-                this.intentosP2--; //Se le quita un intento
-                jTFIntentosRestantes.setText(this.intentosP2 + ""); //Se muestran los intentos restantes 
-                jTFShowResultado.setText("Incorrecto"); //SE muestra el mensaje de incorrecto
+                this.losePlayer(0); //Se ejecuta el método para evaluar la variable contador y los intentos del jugador 
                 
                 //Si el jugador 2 ha superado los intentos disponibles (es decir 6)
                 if(this.count == 8 && this.intentosP2 == 0){
@@ -551,7 +597,7 @@ public class JFGameS extends javax.swing.JFrame {
                     this.count = 2; //Se reinician los contadores
                     this.intentosP2 = 6; //Re reinician los intentos de jugador 2 para el siguiente turno
                     this.permiso = true; //Se concede permiso para incresar nueva palabra secreta y nueva pista
-                    jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
+                    jTFShowResultado.setText("Game Lose"); //Se muestra mensaje de que ha perdido
                     
                     jTFShowPlayerTurn.setText(this.getPlayer1());
                     JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de " + this.getPlayer1());
@@ -565,31 +611,19 @@ public class JFGameS extends javax.swing.JFrame {
             this.wordsPlayer1[this.count] = jTFAdivinarW.getText();
             
             if(this.wordsPlayer1[this.count].equals(this.wordsPlayer2[0])){
-                 
-                 
-                 System.out.println("Entro en el primer if del jugador 1");
+             
+                System.out.println("Entro en el primer if del jugador 1");
                 //Si el jugador 1 acierta la palabra del jugadpr 2 se le agrega un punto a su puntaje
                 this.setPlayer1Points(1);
                 jTFShowPointsP1.setText(this.getPlayer1Points() + ""); //Se coloca el puntaje del jugador 1
                 
-                jTFShowResultado.setText("Correcto"); //Se afirma que está correcto
-                
-                //Se manda un mensaje del cmabio de turno
-                jTFShowPlayerTurn.setText(this.getPlayer2());
-                JOptionPane.showMessageDialog(null, "Felicitaciones \nAhora es turno de " + this.getPlayer2()); 
-                
-                this.turno = 0; //Se cambia turno
-                this.permiso = true;
-                this.count = 2;
-                this.intentosP1 = 6;
+               
+                this.ganadorP(this.getPlayer1Points(), this.getPlayer2Points());
                 
             } else {
-                 System.out.println("Entro en el primer else del jugador 1");
-                //Si el jugador 1 no acierta la palabra del jugadpr 2 se agrega un contador
-                this.count++;
-                this.intentosP1--; //Se le quita un intento
-                jTFIntentosRestantes.setText(this.intentosP1 + ""); //Se muestran los intentos restantes 
-                jTFShowResultado.setText("Incorrecto"); //SE muestra el mensaje de incorrecto
+                System.out.println("Entro en el primer else del jugador 1");
+                
+                this.losePlayer(1); //Se ejecuta el método para evaluar la variable contador y los intentos del jugador 
                 
                 //Si el jugador 1 ha superado los intentos disponibles (es decir 6) este pierde y sucede lo siguiente:
                 if(this.count == 8 && this.intentosP1 == 0){
@@ -598,7 +632,7 @@ public class JFGameS extends javax.swing.JFrame {
                     this.permiso = true;
                     this.intentosP1 = 6;
                     
-                    jTFShowResultado.setText("Game Lost"); //Se muestra mensaje de que ha perdido
+                    jTFShowResultado.setText("Game Lose"); //Se muestra mensaje de que ha perdido
                     
                     jTFShowPlayerTurn.setText(this.getPlayer2());
                     JOptionPane.showMessageDialog(null, "Que lástima \nAhora es turno de " + this.getPlayer2());
